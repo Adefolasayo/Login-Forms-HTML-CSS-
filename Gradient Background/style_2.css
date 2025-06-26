@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'); /* Example font, adjust as needed */
+
+:root {
+    --primary-blue: #0100A4; /* Dark blue background */
+    --secondary-blue: #007bff; /* A brighter blue for accents/buttons if needed */
+    --text-color-light: #ffffff;
+    --input-border-color: #ffffff;
+    --button-bg-color: #007bff; /* Example button color */
+    --button-text-color: #ffffff;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; /* Make html and body fill the entire viewport */
+    overflow: hidden; /* Prevent scrollbars if not needed */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Use your preferred font */
+    background-color: var(--primary-blue); /* Set the body background to the primary blue */
+    display: flex; /* Still useful for container adjustments if needed, but not for centering the container */
+    flex-direction: column; /* Ensure vertical flow */
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Make the container fill the full viewport height */
+    max-width: 100%; /* Allow it to take full width */
+    /* UPDATED GRADIENT HERE */
+    background: linear-gradient(135deg, #0100A4 0%, #000000 100%); /* Linear gradient from #0100A4 to #000000 */
+    border-radius: 0; /* Remove rounded corners for a full-page fill */
+    overflow: hidden; /* Prevent scroll within the container */
+}
+
+/* Left Panel Styles */
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes logo to top, welcome section to middle */
+    align-items: center; /* Horizontally centers content within the panel by default */
+    padding: 40px;
+    color: var(--text-color-light);
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* For potential background elements */
+}
+
+.logo {
+    align-self: flex-start; /* Aligns logo to the start (top-left) of the panel */
+    margin-bottom: auto; /* Pushes the welcome section down */
+}
+
+.logo img {
+    max-width: 150px; /* Adjust logo size */
+    height: auto;
+    /* filter: brightness(0) invert(1); */ /* Uncomment if your logo is dark and needs to be white */
+}
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns content to the left within this section */
+    justify-content: center;
+    margin-bottom: auto; /* Pushes the welcome section up from the bottom */
+    width: 100%; /* Take full width to control alignment */
+    padding-left: 20%; /* Adjust this value to control the left margin for alignment */
+    box-sizing: border-box; /* Include padding in the width */
+}
+
+.welcome-section h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.welcome-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.signup-button {
+    background-color: transparent;
+    color: var(--text-color-light);
+    border: 2px solid var(--text-color-light);
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    align-self: flex-start; /* Aligns button to the left */
+}
+
+.signup-button:hover {
+    background-color: var(--text-color-light);
+    color: #000000;
+}
+
+/* Right Panel Styles (Login Form) */
+.right-panel {
+    flex: 1;
+    /*background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent overlay for the right side */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background circles for the right panel */
+.right-panel::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle white */
+    border-radius: 50%;
+    filter: blur(20px);
+}
+
+.right-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.03); /* Even more subtle */
+    border-radius: 50%;
+    filter: blur(15px);
+}
+
+
+.login-form-container {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white for the form background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-align: center;
+    width: 80%; /* Adjust width as needed */
+    max-width: 400px;
+}
+
+.login-form-container h2 {
+    color: var(--text-color-light);
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-color-light);
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle input background */
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    color: var(--text-color-light);
+    font-size: 1em;
+    outline: none;
+    box-sizing: border-box; /* Ensures padding doesn't increase width */
+}
+
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus {
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.login-button {
+    background-color: #0100A4;
+    color: var(--button-text-color);
+    border: none;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.login-button:hover {
+    background-color: #000000; /* Darker shade on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto; /* Allow height to adjust based on content */
+        min-height: 100vh; /* Ensure it still takes at least full viewport height */
+    }
+
+    .left-panel {
+        padding: 30px;
+        justify-content: center;
+        min-height: 300px; /* Ensure some height for the left panel on smaller screens */
+    }
+
+    .logo {
+        align-self: center; /* Center logo on smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .welcome-section {
+        align-items: center; /* Center content on smaller screens */
+        padding-left: 0; /* Remove specific padding for smaller screens */
+        text-align: center; /* Center text */
+    }
+
+    .welcome-section h1,
+    .welcome-section p {
+        text-align: center; /* Center text within the section */
+    }
+
+    .signup-button {
+        align-self: center; /* Center the button */
+    }
+
+    .right-panel {
+        padding: 30px;
+    }
+
+    .login-form-container {
+        width: 90%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-section h1 {
+        font-size: 2.5em;
+    }
+
+    .welcome-section p {
+        font-size: 1em;
+    }
+
+    .signup-button {
+        padding: 10px 25px;
+        font-size: 0.9em;
+    }
+
+    .login-form-container {
+        padding: 25px;
+    }
+
+    .login-form-container h2 {
+        font-size: 1.8em;
+    }
+
+    .form-group input {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+
+    .login-button {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+}
